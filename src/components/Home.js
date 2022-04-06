@@ -8,7 +8,8 @@ class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            Locations: []
+            location: [],
+            mealTypes: []
         }
     }
 
@@ -16,19 +17,31 @@ class Home extends React.Component {
         axios({
             method: 'GET',
             url: 'http://localhost:9825/Locations',
-            header: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
             .then(response => {
-                this.setState({ Locations: response.data.Locations })
+                this.setState({ Locations: response.data.location })
             })
             .catch()
+    
+
+    axios({
+        method: 'GET',
+        url: 'http://localhost:9825/MealTypes',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(response => {
+            this.setState({ MealTypes: response.data.mealTypes })
+        })
+        .catch()
     }
+
     render() {
-        const { Locations } = this.state;
+        const { location, mealTypes } = this.state;
         return (
            <div>
-             <Wallpaper LocationsData = {Locations} />
-             <QuickSearch />
+             <Wallpaper LocationsData = {location} />
+             <QuickSearch MealTypesData = {mealTypes}/>
  
           </div>
 

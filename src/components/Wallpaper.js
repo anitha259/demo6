@@ -28,9 +28,10 @@ class Wallpaper extends React.Component {
      <div className="main-heading">Find the best restaurant, cafes and bars</div>
 
      <select className="dd">
-      <option>Select</option>
+      
+       {/* <option value="0" selected disabled>select</option> */}
         {LocationsData.map((item) => {
-            return <option value="0">{item.name}</option>
+            return <option value="0">{`${item.name}, ${item.city}`}</option>
         })}
      </select>
 

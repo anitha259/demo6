@@ -4,18 +4,16 @@ import QuickSearchItem from './QuickSearchItem';
 
 class QuickSearch extends React.Component {
     render() {
+        const { MealTypesData } = this.props;
         return (
 <div>
   <div className="container">
    <div className="heading">Quick Search</div>
     <div className="sub-heading">Discover restaurant by type of meal</div>
      <div className="row">
-         <QuickSearchItem />
-         <QuickSearchItem />
-         <QuickSearchItem />
-         <QuickSearchItem />
-         <QuickSearchItem />
-         <QuickSearchItem />
+       {MealTypesData.map(item => { 
+           return <QuickSearchItem />
+           })}
      
 </div> 
 
