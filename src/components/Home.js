@@ -20,7 +20,7 @@ class Home extends React.Component {
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => {
-                this.setState({ Locations: response.data.location })
+                this.setState({ location: response.data.location })
             })
             .catch()
     
@@ -31,7 +31,7 @@ class Home extends React.Component {
         headers: { 'Content-Type': 'application/json' }
     })
         .then(response => {
-            this.setState({ MealTypes: response.data.mealTypes })
+            this.setState({ mealTypes: response.data.mealTypes })
         })
         .catch()
     }
