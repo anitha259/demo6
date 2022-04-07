@@ -12,7 +12,12 @@ class QuickSearch extends React.Component {
     <div className="sub-heading">Discover restaurant by type of meal</div>
      <div className="row">
        {MealTypesData.map(item => { 
-           return <QuickSearchItem />
+           return < QuickSearchItem 
+             heading={item}
+             description={item}
+             image={item}
+             Id={item}
+            />
            })}
      
 </div> 

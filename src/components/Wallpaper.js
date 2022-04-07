@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Home.css';
 
+
 class Wallpaper extends React.Component {
     render() {
         const { LocationsData } = this.props;
@@ -29,7 +30,7 @@ class Wallpaper extends React.Component {
 
      <select className="dd">
       
-       {/* <option value="0" selected disabled>select</option> */}
+       <option value="0" selected disabled>selected</option>
         {LocationsData.map((item) => {
             return <option value="0">{`${item.name}, ${item.city}`}</option>
         })}
