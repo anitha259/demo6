@@ -1,30 +1,36 @@
 import React from 'react';
-import '../styles/Home.css';
+import '../Styles/home.css';
 import QuickSearchItem from './QuickSearchItem';
 
 class QuickSearch extends React.Component {
     render() {
-        const { MealTypesData } = this.props;
+        const { watchData } = this.props;
         return (
-<div>
-  <div className="container">
-   <div className="heading">Quick Search</div>
-    <div className="sub-heading">Discover restaurant by type of meal</div>
-     <div className="row">
-       {MealTypesData.map(item => { 
-           return < QuickSearchItem 
-             heading={item}
-             description={item}
-             image={item}
-             Id={item}
-            />
-           })}
-     
-</div> 
+            <div>
+                <div className="quickSearch">
+                    <p className="quickSearchHeading">
+                        Quick Searches
+                    </p>
+                    <p className="quickSearchSubHeading">
+                        Discover watch for your wrist 
+                    </p>
 
-</div>
-</div>
-      )
-     }
-    }   
-export default QuickSearch;     
+                    <div className="container-fluid">
+                        <div className="row">
+                            {watchData.map(item => {
+                                return <QuickSearchItem
+                                    heading={item.name}
+                                    description={item.content}
+                                    image={item.image}
+                                    id={item.watch}
+                                />
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default QuickSearch;

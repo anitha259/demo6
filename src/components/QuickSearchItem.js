@@ -1,28 +1,36 @@
- import React from 'react';
- import { withRouter} from 'react-router-dom';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
- class QuickSearchItem extends React.Component {
-    handleNavigate = () => {
-       this.props.history.push('/filter');
+class QuickSearchItem extends React.Component {
+    handleNavigate = (watchId) => {
+        const locationId = sessionStorage.getItem('locationId');
+        if (locationId) {
+            this.props.history.push(`/filter?watch=${watchId}&location=${locationId}`);
+        } else {
+            this.props.history.push(`/filter?watch=${watchId}`);
+        }
     }
-     render() {
-        const { heading,  description,  image, id } = this.props;
-      return (
-          
-               <div className="col-lg-4 col-md-6 col-sm-12" onClick={this.handleNavigate}>
-                <div className="item">
-                   <div className="item-left">
-                     <img alt="" src={`./${image}`} width="100%" height="100%" />
-                   </div>
-                <div className="item-right">
-                <div className="qs-heading">{heading}</div>
-                <div className="qs-subheading">{description}</div>
-                   </div>
-                  </div>
-              </div>
-          
-      )
 
- }
- }
- export default withRouter(QuickSearchItem);
+    render() {
+        const { heading, description, image, id } = this.props;
+        return (
+            <div className="col-sm-12 col-md-6 col-lg-4" onClick={() => this.handleNavigate(id)}>
+                <div className="tileContainer">
+                    <div className="tileComponent1">
+                        <img alt="" src={`./${image}`} height="150" width="140" />
+                    </div>
+                    <div className="tileComponent2">
+                        <div className="componentHeading">
+                            {heading}
+                        </div>
+                        <div className="componentSubHeading">
+                            {description}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default withRouter(QuickSearchItem);

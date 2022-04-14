@@ -1,54 +1,51 @@
 import React from 'react';
-import '../styles/Home.css';
-import Wallpaper from './Wallpaper'
-import QuickSearch from './QuickSearch'
-import axios from 'axios' ;
+import '../Styles/home.css';
+import Wallpaper from './Wallpaper';
+import QuickSearch from './QuickSearch';
+
+import axios from 'axios';
 
 class Home extends React.Component {
     constructor() {
         super();
         this.state = {
             location: [],
-            mealTypes: []
+            watch: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        sessionStorage.clear();
         axios({
             method: 'GET',
-            url: 'http://localhost:9825/Locations',
+            url: 'http://localhost:2598/location',
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => {
-                this.setState({ Locations: response.data.location })
+                this.setState({ location: response.data.location })
             })
             .catch()
-    
 
-    axios({
-        method: 'GET',
-        url: 'http://localhost:9825/MealTypes',
-        headers: { 'Content-Type': 'application/json' }
-    })
-        .then(response => {
-            this.setState({ MealTypes: response.data.mealTypes })
+        axios({
+            method: 'GET',
+            url: 'http://localhost:2598/watch',
+            headers: { 'Content-Type': 'application/json' }
         })
-        .catch()
+            .then(response => {
+                this.setState({ watch: response.data.watch })
+            })
+            .catch()
     }
 
     render() {
-        const { location, mealTypes } = this.state;
+        const { location, watch } = this.state;
         return (
-           <div>
-             <Wallpaper LocationsData = {location} />
-             <QuickSearch MealTypesData = {mealTypes}/>
- 
-          </div>
-
-
-)
-            
-  
-}    
+            <div>
+                <Wallpaper locationData={location} />
+                <QuickSearch watchData={watch} />
+            </div>
+        )
+    }
 }
+
 export default Home;
