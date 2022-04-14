@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/home.css';
+import '../Styles/Home.css';
 import QuickSearchItem from './QuickSearchItem';
 
 class QuickSearch extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/home.css';
+import '../Styles/Home.css';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
